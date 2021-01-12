@@ -1,17 +1,16 @@
 package ehu.isad.controllers.ui;
 
+import ehu.isad.Main;
 import javafx.fxml.FXML;
 
 public class ProbaController {
-
-
-    private static ProbaController instance=new ProbaController();
-
-    private ProbaController() {}
-
-    public static ProbaController getInstance() {
-        return instance;
+    private Main main;
+    public void setMainApp(Main main){
+        this.main=main;
     }
+
+
+
 
     @FXML
     void initialize() {

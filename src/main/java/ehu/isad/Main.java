@@ -14,27 +14,22 @@ public class Main extends Application {
 
   private Parent root;
   private Stage stage;
+  private ProbaController probaController;
 
   @Override
   public void start(Stage primaryStage) throws Exception {
-    loadUI(primaryStage);
-    stageSetup();
+    stage= primaryStage;
+    this.pantailakKargatu();
+    stage.setTitle("Azterketa");
+    stage.setScene(new Scene(root));
     stage.show();
   }
 
-  private void loadUI(Stage primaryStage) throws IOException {
-    stage = primaryStage;
+  private void pantailakKargatu() throws IOException {
     FXMLLoader loader = new FXMLLoader(getClass().getResource("/proba.fxml"));
-    ProbaController mainController = ProbaController.getInstance();
-    loader.setController(mainController);
-    root = loader.load();
-  }
-
-  private void stageSetup(){
-    stage.setScene(new Scene(root));
-    stage.setTitle("Azterketa");
-    stage.getIcons().add(new Image(Main.class.getResourceAsStream("/icon.png")));
-    stage.setResizable(false);
+    root = (Parent) loader.load();
+    probaController= loader.getController();
+    probaController.setMainApp(this);
   }
 
 
